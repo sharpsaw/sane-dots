@@ -1,0 +1,14 @@
+#!/bin/sh
+## Run args as command. On exit 0 do nothing, on exit 1 fall back to shell.
+# Good for when you want to `exec` blindly. E.g.: exec abend-shell volatilecmd
+
+# Note: Only designed for simple commands at the moment. Will have to be
+# reworked a bit to allow things like:
+#  abend-shell '(cd /tmp; ls)'
+# or:
+#  abend-shell someshellfunction
+
+FAILCMD="${ABEND_CMD:-$SHELL}"
+"$@" ||
+    ( /bin/echo -e "\e[31m$@\e[0m\n…exited with $?. Resorting to $FAILCMD" &&
+        "$FAILCMD" )
