@@ -1,0 +1,16 @@
+#!/bin/sh
+...alias2script() {
+    (
+        set -xe
+        [ ! -e $1 ]
+        which $1
+        echo '#!/bin/sh -xe' > $1
+        if which $1 | head -n1 | grep ' aliased to'; then
+            which $1 | sed 's/.* aliased to //; s/$/ "$@"/' >> $1
+        else
+            which $1 >> $1
+            echo "$1 \"\$@\"" >> $1
+        fi
+        kiss $1
+    )
+}
