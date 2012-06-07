@@ -1,0 +1,4 @@
+#!/bin/sh
+kiss() {
+    command kiss "$@" && hash -r
+}
