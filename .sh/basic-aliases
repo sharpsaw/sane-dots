@@ -1,4 +1,6 @@
 #!/bin/sh
+
+alias ls='ls --classify --color=auto' # More?
 alias ll='ls -l'
 alias la='ls -a'
 alias lA='ls -A'
