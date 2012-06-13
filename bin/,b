@@ -11,7 +11,15 @@ done
 python -c 'import webbrowser' >/dev/null 2>&1 &&
     browser='python -m webbrowser'
 
-# TODO - uri escaping?
+URL=$1
+if [[ -e $URL ]]; then
+    if [[ -e "`pwd`/$URL" ]]; then
+       URL="file://`pwd`/$URL"
+    else
+        URL="file://$URL"
+    fi
+fi
 
-echo "[$browser "$@"]"
+# TODO - uri escaping?
+echo "+ $browser $@"
 $browser "$@"
