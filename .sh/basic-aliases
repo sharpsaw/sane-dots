@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if ls --classify >& /dev/null;
+if ls --classify >& /dev/null; then
     alias ls='ls --classify --color=auto'
 else
     alias ls='ls -hG' # More?
