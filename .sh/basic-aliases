@@ -1,6 +1,10 @@
 #!/bin/sh
 
-alias ls='ls --classify --color=auto' # More?
+if ls --classify >& /dev/null;
+    alias ls='ls --classify --color=auto'
+else
+    alias ls='ls -hG' # More?
+fi
 alias ll='ls -l'
 alias la='ls -a'
 alias lA='ls -A'
