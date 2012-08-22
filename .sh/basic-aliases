@@ -13,6 +13,8 @@ alias RM='rm -rf'
 
 alias -- +x='chmod +x'
 alias -- -x='chmod -x'
+alias -- +r='chmod +r'
+alias -- +rX-R='chmod +rX -R' # make dirs +rx, files +r
 
 alias ..='cd ..'
 alias ..1='cd ..'
