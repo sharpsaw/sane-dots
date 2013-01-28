@@ -1,0 +1,16 @@
+#!/bin/sh -xe
+## Redo some keybindings. TODO: make this behave conditionally according to args
+if [ -n "$DISPLAY" ]; then
+    # Caps = Ctrl
+    setxkbmap -option ctrl:nocaps
+
+    # OS X style
+    setxkbmap -option altwin:swap_lalt_lwin
+
+    ## For those willing to admit that scrolling is more logical if inverted.
+    xmodmap -e 'pointer = 1 2 3 5 4' 2>&1 |
+      grep -v 'Only changing the first 5 of [0-9]* buttons' || true
+
+    # For XCompose (see https://github.com/sharpsaw/unicode-dots )
+    xmodmap -e 'keysym Alt_R = Multi_key'
+fi
