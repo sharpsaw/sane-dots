@@ -1,0 +1,3 @@
+#!/bin/sh -xe
+## DuckDuckGo using ,b. Works with 0, 1, or many arguments. Rember to backslash "!" in bang-commands
+,b "https://duckduckgo.com/lite?q=$*"
